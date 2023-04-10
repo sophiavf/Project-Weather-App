@@ -3,8 +3,7 @@ export default function Footer() {
 	return (
 		<footer>
 			<div className="footerContent">
-				Author: Sophia <a href="https://github.com/sophiavf">GitHub</a> &copy $
-				{currentYear}`
+				Author: Sophia <a href="https://github.com/sophiavf">GitHub</a> &copy;{currentYear}
 			</div>
 		</footer>
 	);

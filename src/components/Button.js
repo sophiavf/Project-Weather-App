@@ -1,7 +1,7 @@
-function Button({ value, onSquareClick }) {
+function Button({ buttonText, buttonClass, onSquareClick }) {
 	return (
-		<button className="square" onClick={onSquareClick}>
-			{value}
+		<button className={buttonClass} onClick={onClick}>
+			{buttonText}
 		</button>
 	);
 }
