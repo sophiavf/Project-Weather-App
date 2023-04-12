@@ -1,16 +1,13 @@
+import { useState } from "react";
 
-import { useState } from 'react';
-
-export default function Header() {
-	const [city, setCity] = useState(''); // Sets initial state
-
+export default function Header(setChosenCity) {
 	//Source: https://react.dev/learn/managing-state#reacting-to-input-with-state
 	function handleSubmit(e) {
 		e.preventDefault();
 	}
 	function handleTextareaChange(e) {
-		setAnswer(e.target.value);
-	  }
+		setChosenCity(e.target.value);
+	}
 
 	return (
 		<header>
@@ -18,8 +15,13 @@ export default function Header() {
 				<span className="material-symbols-outlined">thermostat</span>
 				<div>Your Personal Weather App</div>
 			</div>
-			<form onSubmit={handleSubmit}> 
-			<input></input>
+			<form onSubmit={handleSubmit}>
+				<input
+					type="text"
+					name="cityInput"
+					placeholder="Search for a city"
+					onChange={handleTextareaChange}
+				></input>
 			</form>
 		</header>
 	);

@@ -5,7 +5,7 @@ const baseUrl = "http://api.weatherapi.com/v1";
 
 async function WeatherData(apiRequest, city, days) {
 	const response = await fetch(
-		`${baseUrl}${apiRequest}?key=${apiKey}&q=${city}days=${days}`,
+		`${baseUrl}${apiRequest}.json?key=${apiKey}&q=${city}{days}`,
 		{
 			mode: "cors",
 		}
@@ -17,20 +17,22 @@ async function WeatherData(apiRequest, city, days) {
 export default WeatherData;
 
 //Current weather
-
 function currentWeather(city) {
-	const data = WeatherData('/current.', city); 
+	const data = WeatherData("/current.", city);
+	return data;
 }
 //Current details
 function currentDetails(city) {
-	const data = WeatherData('/current.', city); 
+	const data = WeatherData("/current.", city);
+	return data;
 }
 //Forecast hourly
 function forecastHourly() {}
 //Forecast daily
 function forecastDaily() {
-	const days = 7; 
-
+	const days = 7;
+	const data = weatherData("Forecast", city, `&days=${days}`);
+	return data;
 }
 
-export { currentWeather };
+export { currentWeather, currentDetails, forecastHourly, forecastDaily };

@@ -1,2 +1,3 @@
-function ForecastDaily({ city }) {}
+import { forecastDaily } from "../services/WeatherData";
+function ForecastDaily(city) {}
 export default ForecastDaily;
