@@ -1,32 +1,25 @@
-import Button from "./Button";
+import ForecastDaily from "./ForecastDaily";
+import ForecastHourly from "./ForecastHourly";
+
+
+function Display({})
 
 //Toggles between hourly and daily forecast
-export default function ForecastDisplay() {
-	this.state = {
-		display: "hourly",
-	};
+function ForecastDisplay() {
+	const [display, setDisplay] = useState("hourly");
 
 	function changeForecastDisplay() {
-		let { display } = this.state;
-		this.setState({ display: display === "hourly" ? "daily" : "hourly" });
-	}
-
-	function renderForecast() {
-		let { display } = this.state;
-		if (display === "hourly") {
-			//return hourly component
-		} else {
-			//return daily component
-		}
+		setDisplay(display === "hourly" ? "daily" : "hourly");
 	}
 
 	return (
 		<div class="forecastDisplay">
-			<Button
-				buttonText={"Hourly / Daily"}
-				buttonClass={toggleHourlyDaily}
-				onClick={changeForecastDisplay}
-			/>
+			<button onClick={changeForecastDisplay}></button>
+			<div className="forecastContainer">{
+				display ==="hourly" ? <ForecastHourly /> : <ForecastDaily/>
+			}</div>
 		</div>
 	);
 }
+
+export default ForecastDisplay;
