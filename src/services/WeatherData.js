@@ -10,20 +10,18 @@ async function WeatherData(apiRequest, city, days) {
 			mode: "cors",
 		}
 	);
-	const weatherData = await response.json();
-	return weatherData;
+	return await response.json();
 }
 
-export default WeatherData;
-
 //Current weather
-function currentWeather(city) {
-	const data = WeatherData("/current.", city);
+async function currentWeather(city) {
+	const data = await WeatherData("/current", city);
+	console.log(data);
 	return data;
 }
 //Current details
 function currentDetails(city) {
-	const data = WeatherData("/current.", city);
+	const data = WeatherData("/current", city);
 	return data;
 }
 //Forecast hourly
@@ -31,7 +29,7 @@ function forecastHourly() {}
 //Forecast daily
 function forecastDaily() {
 	const days = 7;
-	const data = weatherData("Forecast", city, `&days=${days}`);
+	const data = weatherData("/Forecast", city, `&days=${days}`);
 	return data;
 }
 

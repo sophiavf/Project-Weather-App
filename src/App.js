@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { useState } from "react";
+
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import ForecastCurrent from "./components/ForecastCurrent";
-import ForecastCurrentDetails from "./components/ForecastCurrentDetails";
 import ForecastDisplay from "./components/ForecastDisplay";
 
 export default function App() {
@@ -11,7 +12,6 @@ export default function App() {
 		<div>
 			<Header setChosenCity={setCity} />
 			<ForecastCurrent setChosenCity={city} />
-			<ForecastCurrentDetails />
 			<ForecastDisplay />
 			<Footer />
 		</div>

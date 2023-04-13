@@ -1,5 +1,7 @@
+import { useState } from "react";
 import ForecastDaily from "./ForecastDaily";
 import ForecastHourly from "./ForecastHourly";
+
 
 //Toggles between hourly and daily forecast
 function ForecastDisplay() {
@@ -10,7 +12,7 @@ function ForecastDisplay() {
 	}
 
 	return (
-		<div class="forecastDisplay">
+		<div className="forecastDisplay">
 			<button onClick={changeForecastDisplay}></button>
 			<div className="forecastContainer">
 				{display === "hourly" ? <ForecastHourly /> : <ForecastDaily />}

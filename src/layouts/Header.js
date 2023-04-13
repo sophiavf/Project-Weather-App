@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export default function Header(setChosenCity) {
 	//Source: https://react.dev/learn/managing-state#reacting-to-input-with-state
 	function handleSubmit(e) {
@@ -13,7 +11,7 @@ export default function Header(setChosenCity) {
 		<header>
 			<div className="headerLogo">
 				<span className="material-symbols-outlined">thermostat</span>
-				<div>Your Personal Weather App</div>
+				<h1>Your Personal Weather App</h1>
 			</div>
 			<form onSubmit={handleSubmit}>
 				<input
@@ -22,6 +20,7 @@ export default function Header(setChosenCity) {
 					placeholder="Search for a city"
 					onChange={handleTextareaChange}
 				></input>
+				<button type="submit">Submit</button>
 			</form>
 		</header>
 	);
