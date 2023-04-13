@@ -36,6 +36,7 @@ footer {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+
     .currentWeather {
         font-weight: 500;
     }
@@ -51,4 +52,12 @@ footer {
 
         }
     }
+}
+
+.forecastDaily>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: $layout-padding;
 }

@@ -2,10 +2,9 @@ import { useState } from "react";
 import ForecastDaily from "./ForecastDaily";
 import ForecastHourly from "./ForecastHourly";
 
-
 //Toggles between hourly and daily forecast
-function ForecastDisplay() {
-	const [display, setDisplay] = useState("hourly");
+function ForecastDisplay({ chosenCity }) {
+	const [display, setDisplay] = useState("daily");
 
 	function changeForecastDisplay() {
 		setDisplay(display === "hourly" ? "daily" : "hourly");
@@ -15,7 +14,7 @@ function ForecastDisplay() {
 		<div className="forecastDisplay">
 			<button onClick={changeForecastDisplay}></button>
 			<div className="forecastContainer">
-				{display === "hourly" ? <ForecastHourly /> : <ForecastDaily />}
+				{display === "hourly" ? <ForecastHourly chosenCity={chosenCity}/> : <ForecastDaily chosenCity={chosenCity}/>}
 			</div>
 		</div>
 	);

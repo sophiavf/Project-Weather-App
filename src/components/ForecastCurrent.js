@@ -2,35 +2,32 @@ import { currentWeather } from "../services/WeatherData";
 import React, { useEffect, useState } from "react";
 import format from "date-fns/format";
 
-const getFormattedDate = (dateStr) => {
+function getFormattedDate(dateStr) {
 	if (dateStr !== undefined) {
 		const currentDate = new Date(dateStr * 1000); // To convert from epoch (* 1000)
 		return format(currentDate, "eeee, Mo MMM YYY, p");
 	} else {
 		return;
 	}
-};
+}
 
-function ForecastCurrent({ setChosenCity }) {
+function ForecastCurrent({ chosenCity }) {
 	const [data, setData] = useState();
-	const [imperialMetric, setImperialMetric] = useState("metric");
+	//const [imperialMetric, setImperialMetric] = useState("metric");
 
 	useEffect(() => {
 		// declare the async data fetching function
 		const fetchData = async () => {
 			// get the data from the api
-			const data = await currentWeather(setChosenCity);
+			const data = await currentWeather(chosenCity);
 			// set state with the result
 			setData(data);
 		};
-
 		// call the function
 		fetchData()
 			// make sure to catch any error
 			.catch(console.error);
-	}, []);
-
-	// const data = currentWeather(setChosenCity);
+	}, [chosenCity]);
 
 	return (
 		<div className="forecastCurrent">

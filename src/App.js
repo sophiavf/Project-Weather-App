@@ -11,8 +11,8 @@ export default function App() {
 	return (
 		<div>
 			<Header setChosenCity={setCity} />
-			<ForecastCurrent setChosenCity={city} />
-			<ForecastDisplay />
+			<ForecastCurrent chosenCity={city} />
+			<ForecastDisplay chosenCity={city} />
 			<Footer />
 		</div>
 	);
