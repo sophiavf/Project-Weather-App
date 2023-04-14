@@ -133,8 +133,8 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 ## Roadmap
 
-- [ ] Implement [form validation with Javascript](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#validating_forms_using_javascript) and autocompletion to reduce user errors
-- [ ] Enable users to select imperial or metric units
+- [ ] Implement [form validation with Javascript](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#validating_forms_using_javascript) and autocompletion to reduce user errors in the city selection input element 
+- [ ] Enable users to select imperial or metric units 
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
