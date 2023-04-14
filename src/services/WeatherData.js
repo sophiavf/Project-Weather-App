@@ -16,17 +16,13 @@ async function WeatherData(apiRequest, city, days) {
 //Current weather
 async function currentWeather(city) {
 	const data = await WeatherData("/current", city, "");
-	console.log(data);
 	return data;
 }
-//Forecast hourly
-function forecastHourly() {}
-//Forecast daily
-async function forecastDaily(city) {
+//Forecast
+async function forecast(city) {
 	const days = 7;
 	const data = await WeatherData("/forecast", city, `&days=${days}`);
-	console.log(data);
 	return data;
 }
 
-export { currentWeather, forecastHourly, forecastDaily };
+export { currentWeather, forecast };

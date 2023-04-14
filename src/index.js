@@ -4,7 +4,7 @@ import "./assets/style.scss";
 //Components
 import App from "./App";
 
-const root = createRoot(document.getElementById("app"));
+const root = createRoot(document.querySelector("body"));
 root.render(
 	<StrictMode>
 		<App />

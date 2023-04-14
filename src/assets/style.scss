@@ -1,10 +1,29 @@
-$layout-padding: 30px;
-$defaultGap: 15px;
+$layout-padding: 25px;
+$defaultGap: 20px;
+
+$TEALBLUE: #388087;
+$MOONSTONEBLUE: #6FB3B8;
+$POWDERBLUE: #BADFE7;
+$MAGICMINT: #C2EDCE;
+$WHITESMOKE: #F6F6F2;
+
 
 * {
     padding: 0;
     margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.forecastContent {
+    height: inherit;
 }
 
 header {
@@ -13,6 +32,8 @@ header {
     justify-content: space-between;
     padding: $layout-padding;
     align-items: center;
+    color: $TEALBLUE;
+    background-color: $MAGICMINT;
 
     .headerLogo {
         display: flex;
@@ -24,40 +45,160 @@ header {
 
 footer {
     text-align: center;
-    padding: $layout-padding;
+    padding: 10px;
+    color: $WHITESMOKE;
+    background-color: $TEALBLUE;
+    position: relative;
 
     div {
         padding: 5px;
     }
+
+    a {
+        color: inherit;
+
+    }
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: $WHITESMOKE;
+    height: 100%;
+    justify-content: space-between;
 }
 
 .forecastCurrent {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-items: stretch;
+    padding: $layout-padding;
+    gap: $defaultGap;
 
     .currentWeather {
-        font-weight: 500;
+        text-align: center;
+        flex: 1;
+
+        * {
+            padding: 3px;
+        }
+
+        .temp {
+            font-weight: 800;
+        }
     }
 
     .details {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: $defaultGap;
+        align-items: center;
+        justify-items: center;
+        flex: 1;
 
         .detailIconName {
             display: flex;
-            gap: $defaultGap;
+            gap: $defaultGap + 5px;
 
         }
     }
+
 }
 
-.forecastDaily>div {
+.forecastDaily>div,
+.forecastHourly>div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: $layout-padding;
+    overflow-x: auto;
+    gap: $defaultGap;
+
+
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hourContainer {
+        white-space: nowrap;
+
+        .hourlyTime {
+            font-weight: 600;
+        }
+    }
+
+}
+
+.forecastDisplay {
+    padding: 0 $layout-padding;
+}
+
+.currentWeather,
+.details,
+.forecastContainer {
+    background: white;
+    height: inherit;
+    padding: $layout-padding;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px 8px $POWDERBLUE;
+    margin: $layout-padding 0;
+}
+
+button {
+    background: $TEALBLUE;
+    color: $WHITESMOKE;
+    border-radius: 15px;
+    padding: 10px 25px;
+    border: none;
+    font-size: 1.3em;
+    margin: 10px;
+}
+
+input {
+    border-radius: 15px;
+    padding: 15px 25px;
+    margin: 0 $layout-padding;
+    border: none;
+}
+
+form {
+    vertical-align: middle
+}
+
+//Reponsive settings for smaller screens 
+
+@media screen and (max-width: 800px) {
+
+    .forecastCurrent,
+    .forecastDisplay {
+        width: 100%;
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
+
+    .forecastDaily>div,
+    .forecastHourly>div,
+    .forecastCurrent,
+    header {
+        flex-direction: column;
+    }
+
+    body {
+        height: fit-content;
+    }
+
+    .forecastHourly>div {
+        align-items: normal;
+
+    }
+
+    .hourContainer {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        align-content: space-between;
+        justify-content: space-between;
+    }
 }

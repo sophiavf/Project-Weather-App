@@ -9,10 +9,12 @@ import ForecastDisplay from "./components/ForecastDisplay";
 export default function App() {
 	const [city, setCity] = useState("London"); // Sets initial state
 	return (
-		<div>
+		<div className="contentContainer">
 			<Header setChosenCity={setCity} />
-			<ForecastCurrent chosenCity={city} />
-			<ForecastDisplay chosenCity={city} />
+			<div className="forecastContent">
+				<ForecastCurrent chosenCity={city} />
+				<ForecastDisplay chosenCity={city} />
+			</div>
 			<Footer />
 		</div>
 	);

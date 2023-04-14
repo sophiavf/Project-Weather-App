@@ -1,5 +1,3 @@
-import { forecastDaily } from "../services/WeatherData";
-import React, { useEffect, useState } from "react";
 import format from "date-fns/format";
 
 function getFormattedDate(dateStr) {
@@ -28,26 +26,10 @@ function dailyElementList(data) {
 	}
 }
 
-function ForecastDaily({ chosenCity }) {
-	const [data, setData] = useState();
-
-	useEffect(() => {
-		// declare the async data fetching function
-		const fetchData = async () => {
-			// get the data from the api
-			const data = await forecastDaily(chosenCity);
-			// set state with the result
-			setData(data);
-		};
-		// call the function
-		fetchData()
-			// make sure to catch any error
-			.catch(console.error);
-		chosenCity = chosenCity;
-	}, [chosenCity]);
+function ForecastDaily({ forecastData }) {
 	return (
 		<div className="forecastDaily">
-			{data !== undefined ? dailyElementList(data) : <p></p>}
+			{forecastData !== undefined ? dailyElementList(forecastData) : <p></p>}
 		</div>
 	);
 }
