@@ -6,7 +6,5 @@ import App from "./App";
 
 const root = createRoot(document.querySelector("body"));
 root.render(
-	<StrictMode>
 		<App />
-	</StrictMode>
 );
