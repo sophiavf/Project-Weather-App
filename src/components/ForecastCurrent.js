@@ -1,4 +1,3 @@
-import { currentWeather } from "../services/WeatherData";
 import React, { useEffect, useState } from "react";
 import format from "date-fns/format";
 
@@ -19,14 +18,19 @@ function ForecastCurrent({ chosenCity }) {
 		// declare the async data fetching function
 		const fetchData = async () => {
 			// get the data from the api
-			const data = await currentWeather(chosenCity);
-			// set state with the result
-			setData(data);
+			try {
+				const response = await fetch(
+					`http://localhost:8000/weather/${chosenCity}/current`
+				);
+				const data = await response.json();
+				// set state with the result
+				setData(data);
+			} catch (error) {
+				console.log(error);
+			}
 		};
 		// call the function
-		fetchData()
-			// make sure to catch any error
-			.catch(console.error);
+		fetchData();
 	}, [chosenCity]);
 
 	return (

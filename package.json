@@ -6,13 +6,19 @@
 	"private": true,
 	"scripts": {
 		"watch": "webpack --watch",
-		"start": "webpack serve --open",
+		"start:backend": "node ./api/index.js",
+		"start:frontend": "webpack serve --open",
 		"build": "webpack"
 	},
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"axios": "^1.4.0",
+		"cors": "^2.8.5",
 		"date-fns": "^2.29.3",
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"nodemon": "^2.0.22",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-scripts": "^5.0.1"

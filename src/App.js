@@ -21,7 +21,7 @@ export default function App() {
 			}
 		}
 		getUserCityFromIP();
-	}, []); // Stops the u
+	}, []); // Stops the function running twice
 	return (
 		<div className="contentContainer">
 			<Header setChosenCity={setCity} />

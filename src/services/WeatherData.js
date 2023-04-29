@@ -20,7 +20,7 @@ async function currentWeather(city) {
 }
 //Forecast
 async function forecast(city) {
-	const days = 3; 
+	const days = 3;
 	const data = await WeatherData("/forecast", city, `&days=${days}`);
 	return data;
 }
