@@ -7,16 +7,10 @@ require("dotenv").config(); // Load environment variables from .env file
 
 const app = express();
 
-// const weatherApiKey = process.env.WEATHER_API_KEY;
-const weatherApiKey = "06b6a721fa9e44cc9e8172832231004";
+const weatherApiKey = process.env.WEATHER_API_KEY;
 const unsplashAccessKey = process.env.UNSPLASH_ACCESS_KEY;
 
 app.use(cors());
-
-//test
-app.get("/", (req, res) => {
-	res.json("Hi");
-});
 
 app.get("/weather/:city/:endpoint/:days?", async (req, res) => {
 	const { city, endpoint, days } = req.params; // destructuring params
@@ -24,7 +18,7 @@ app.get("/weather/:city/:endpoint/:days?", async (req, res) => {
 	if (endpoint !== "current" && endpoint !== "forecast") {
 		return res
 			.status(400)
-			.json({ error: 'Invalid endpoint. Must be "current" or "forecast".' });
+			.send('Invalid endpoint. Must be "current" or "forecast".');
 	}
 
 	let apiUrl = `https://api.weatherapi.com/v1/${endpoint}.json?key=${weatherApiKey}&q=${city}`;
@@ -35,8 +29,8 @@ app.get("/weather/:city/:endpoint/:days?", async (req, res) => {
 
 	try {
 		const response = await axios.get(apiUrl);
-		const data = response.data;
-		res.json(data);
+		const data = await response.data;
+		res.send(data);
 	} catch (error) {
 		console.log(error);
 		res.status(500).send("Error getting weather data");
@@ -60,6 +54,3 @@ app.get("/photo/:searchTerm", async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
-
-// const data = fetch(`http://localhost:8000/weather/london/current`);
-// console.log(data);

@@ -1,14 +1,16 @@
-import React, { Component } from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+//Importing context
+import { PhaseProvider } from "./components/PhaseProvider";
+import { ThemeProvider } from "./components/ThemeContext";
 
+//importing components
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import ForecastCurrent from "./components/ForecastCurrent";
 import ForecastDisplay from "./components/ForecastDisplay";
 
 export default function App() {
-	const [city, setCity] = useState("London"); // Sets initial state
-
+	const [city, setCity] = useState(); // initial state is set by users IP address below
 	useEffect(() => {
 		async function getUserCityFromIP() {
 			try {
@@ -21,15 +23,20 @@ export default function App() {
 			}
 		}
 		getUserCityFromIP();
-	}, []); // Stops the function running twice
+	}, []); // an empty dependency array ([]) to run the effect only once when the component mounts.
+
 	return (
-		<div className="contentContainer">
-			<Header setChosenCity={setCity} />
-			<div className="forecastContent">
-				<ForecastCurrent chosenCity={city} />
-				<ForecastDisplay chosenCity={city} />
-			</div>
-			<Footer />
-		</div>
+		<PhaseProvider>
+			<ThemeProvider>
+				<div className="contentContainer">
+					<Header setChosenCity={setCity} />
+					<div className="forecastContent">
+						<ForecastCurrent chosenCity={city} />
+						<ForecastDisplay chosenCity={city} />
+					</div>
+					<Footer />
+				</div>
+			</ThemeProvider>
+		</PhaseProvider>
 	);
 }
