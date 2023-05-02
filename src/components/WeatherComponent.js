@@ -10,15 +10,16 @@ import { PhaseContext } from "./contexts/PhaseContext";
 import { CityContext } from "./contexts/CityContext";
 
 export default function WeatherComponent() {
-	const { phase, imageUrl } = useContext(PhaseContext);
-
-	const {city, setCity} = useContext(CityContext); 
+	//Context
+	const { phase, imageUrl, locationTime, setLocationTime } =
+		useContext(PhaseContext);
+	const { city, setCity } = useContext(CityContext);
 
 	if (city === null) {
 		return <div>Loading...</div>;
 	}
 	return (
-		<div>
+		<div className="weatherContent" style={{ backgroundImage: `url(${imageUrl})` }}>
 			<div>Good {phase} </div>
 			<ForecastCurrent />
 			<ForecastDisplay />

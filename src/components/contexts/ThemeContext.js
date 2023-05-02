@@ -10,7 +10,7 @@ export function useThemeUpdate() {
 	return useContext(ThemeContext); 
 }
 
-export function ThemeProvider({ children }) {
+export function ThemeProvider(props) {
 	const [darkTheme, setDarkTheme] = useState(true);
 
 	function toggleTheme() {
@@ -20,7 +20,7 @@ export function ThemeProvider({ children }) {
 	return (
 		<ThemeContext.Provider value={darkTheme}>
 			<ThemeUpdateContext.Provider value={toggleTheme}>
-				{children}
+				{props.children}
 			</ThemeUpdateContext.Provider>
 		</ThemeContext.Provider>
 	);

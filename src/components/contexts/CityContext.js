@@ -2,8 +2,8 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const CityContext = createContext();
 
-export function CityProvider({ children }) {
-	const [city, setCity] = useState(); // initial state is set by users IP address below
+export function CityProvider(props) {
+	const [city, setCity] = useState(null); // initial state is set by users IP address below
 
 	useEffect(() => {
 		async function getUserCityFromIP() {
@@ -14,14 +14,14 @@ export function CityProvider({ children }) {
 				setCity(ipCity);
 			} catch (error) {
 				console.error(error);
-			}
+			} 
 		}
 		getUserCityFromIP();
 	}, []); // an empty dependency array ([]) to run the effect only once when the component mounts.
 
 	return (
 		<CityContext.Provider value={{ city, setCity }}>
-			{children}
+			{props.children}
 		</CityContext.Provider>
 	);
 }

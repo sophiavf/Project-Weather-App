@@ -1,21 +1,23 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 //Create a context object
 export const PhaseContext = createContext(); // sets initial value of context to nothing
 
 export function PhaseProvider(props) {
 	const [phase, setPhase] = useState("");
-	const [imageUrl, setImageUrl] = useState("");
+	const [imageUrl, setImageUrl] = useState({});
+	const [locationTime, setLocationTime] = useState("");
 
 	useEffect(() => {
 		//get the current time
-		const currentTime = new Date().getHours();
+		const currentTime = locationTime;
+		const hours = currentTime.getHours;
 
-		if (currentTime >= 6 && currentTime < 12) {
+		if (hours >= 6 && hours < 12) {
 			setPhase("morning");
-		} else if (currentTime >= 12 && currentTime < 18) {
+		} else if (hours >= 12 && hours < 18) {
 			setPhase("day");
-		} else if (currentTime >= 18 && currentTime < 21) {
+		} else if (hours >= 18 && hours < 21) {
 			setPhase("evening");
 		} else {
 			setPhase("night");
@@ -40,8 +42,10 @@ export function PhaseProvider(props) {
 
 	return (
 		//passes the phase and image url values down to children components
-		<PhaseContext.Provider value={{ phase, imageUrl }}>
-			{props.children}{" "}
+		<PhaseContext.Provider
+			value={{ phase, imageUrl, locationTime, setLocationTime }}
+		>
+			{props.children}
 		</PhaseContext.Provider>
 	);
 }

@@ -9,8 +9,17 @@ function getFormattedDate(dateStr) {
 	}
 }
 
+function ForecastDaily({ forecastData }) {
+	return (
+		<div className="forecastDaily">
+			{forecastData !== undefined ? dailyElementList(forecastData) : <p></p>}
+		</div>
+	);
+}
+export default ForecastDaily;
+
 function dailyElementList(data) {
-	if (data !== undefined) {
+	if (data !== undefined) { // could remove 
 		const array = data?.forecast?.forecastday;
 		const dayForecasts = array.map((day, index) => (
 			<div className="dayContainer" key={index}>
@@ -25,12 +34,3 @@ function dailyElementList(data) {
 		return;
 	}
 }
-
-function ForecastDaily({ forecastData }) {
-	return (
-		<div className="forecastDaily">
-			{forecastData !== undefined ? dailyElementList(forecastData) : <p></p>}
-		</div>
-	);
-}
-export default ForecastDaily;

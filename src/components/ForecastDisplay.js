@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-
 import { PhaseContext } from "./contexts/PhaseContext";
 import { CityContext } from "./contexts/CityContext";
 
@@ -9,8 +8,11 @@ import ForecastDaily from "./ForecastDaily";
 //Toggles between hourly and daily forecast
 function ForecastDisplay() {
 	const [display, setDisplay] = useState("hourly");
-	const [data, setData] = useState();
-	const { phase, imageUrl } = useContext(PhaseContext);
+	const [data, setData] = useState({});
+	const [isLoading, setIsLoading] = useState(true);
+	//Context
+	const { phase, imageUrl, locationTime, setLocationTime } =
+		useContext(PhaseContext);
 	const { city, setCity } = useContext(CityContext);
 
 	//Gets forecast data required for child modules
@@ -28,10 +30,12 @@ function ForecastDisplay() {
 				setData(data);
 			} catch (error) {
 				console.log(error);
+			} finally {
+				setIsLoading(false);
 			}
 		};
 		// call the function, but only if city is not undefined
-		if (city !== undefined) {
+		if (city) {
 			fetchData();
 		}
 	}, [city]);
@@ -42,10 +46,8 @@ function ForecastDisplay() {
 	}
 
 	return (
-		<div
-			className="forecastDisplay"
-			style={{ backgroundImage: `url(${imageUrl})` }}
-		>
+		<div className="forecastDisplay">
+			{/* Button */}
 			{display === "hourly" ? (
 				<button onClick={changeForecastDisplay} className="toggleButton">
 					<b>Hourly</b> / Daily
@@ -55,13 +57,17 @@ function ForecastDisplay() {
 					Hourly / <b>Daily</b>
 				</button>
 			)}
-			<div className="forecastContainer">
-				{display === "hourly" ? (
-					<ForecastHourly forecastData={data} />
-				) : (
-					<ForecastDaily forecastData={data} />
-				)}
-			</div>
+			{isLoading ? (
+				<p>Loading</p>
+			) : (
+				<div className="forecastContainer">
+					{display === "hourly" ? (
+						<ForecastHourly forecastData={data} />
+					) : (
+						<ForecastDaily forecastData={data} />
+					)}
+				</div>
+			)}
 		</div>
 	);
 }
