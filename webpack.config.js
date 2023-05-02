@@ -35,6 +35,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: "./src/assets/index.html",
 			title: "Weather App",
+			favicon: "./src/assets/weather-app.png"
 		}),
 		new MiniCssExtractPlugin({
 			// Options similar to the same options in webpackOptions.output

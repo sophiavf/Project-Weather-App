@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import format from "date-fns/format";
+
+import { CityContext } from "./contexts/CityContext";
 
 function getFormattedDate(dateStr) {
 	if (dateStr !== undefined) {
@@ -10,9 +12,11 @@ function getFormattedDate(dateStr) {
 	}
 }
 
-function ForecastCurrent({ chosenCity }) {
+function ForecastCurrent() {
 	const [data, setData] = useState();
 	//const [imperialMetric, setImperialMetric] = useState("metric");
+
+	const { city, setCity } = useContext(CityContext);
 
 	useEffect(() => {
 		// declare the async data fetching function
@@ -20,7 +24,7 @@ function ForecastCurrent({ chosenCity }) {
 			// get the data from the api
 			try {
 				const response = await fetch(
-					`http://localhost:8000/weather/${chosenCity}/current`
+					`http://localhost:8000/weather/${city}/current`
 				);
 				const data = await response.json();
 				// set state with the result
@@ -29,9 +33,11 @@ function ForecastCurrent({ chosenCity }) {
 				console.log(error);
 			}
 		};
-		// call the function
-		fetchData();
-	}, [chosenCity]);
+		// call the function, but only if city is not undefined
+		if (city !== undefined) {
+			fetchData();
+		}
+	}, [city]);
 
 	return (
 		<div className="forecastCurrent">

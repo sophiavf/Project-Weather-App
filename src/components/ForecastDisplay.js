@@ -1,28 +1,28 @@
 import { useState, useEffect, useContext } from "react";
 
-import { PhaseContext } from "./PhaseProvider";
+import { PhaseContext } from "./contexts/PhaseContext";
+import { CityContext } from "./contexts/CityContext";
 
 import ForecastHourly from "./ForecastHourly";
 import ForecastDaily from "./ForecastDaily";
 
 //Toggles between hourly and daily forecast
-function ForecastDisplay({ chosenCity }) {
+function ForecastDisplay() {
 	const [display, setDisplay] = useState("hourly");
 	const [data, setData] = useState();
-
 	const { phase, imageUrl } = useContext(PhaseContext);
+	const { city, setCity } = useContext(CityContext);
 
 	//Gets forecast data required for child modules
 	// declare the async data fetching function
 	useEffect(() => {
 		// declare the async data fetching function
 		const fetchData = async () => {
-			
 			// get the data from the api
 			try {
 				const days = 3;
 				const response = await fetch(
-					`http://localhost:8000/weather/${chosenCity}/forecast/${days}`
+					`http://localhost:8000/weather/${city}/forecast/${days}`
 				);
 				const data = await response.json();
 				setData(data);
@@ -30,9 +30,11 @@ function ForecastDisplay({ chosenCity }) {
 				console.log(error);
 			}
 		};
-		// call the function
-		fetchData();
-	}, [chosenCity]);
+		// call the function, but only if city is not undefined
+		if (city !== undefined) {
+			fetchData();
+		}
+	}, [city]);
 
 	//Toggles display state
 	function changeForecastDisplay() {

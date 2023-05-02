@@ -1,8 +1,15 @@
-export default function Header({ setChosenCity }) {
+import React, { useContext } from "react";
+
+import { CityContext } from "../components/contexts/CityContext";
+
+export default function Header() {
 	//Source: https://react.dev/learn/managing-state#reacting-to-input-with-state
+
+	const { city, setCity } = useContext(CityContext);
+
 	function handleSubmit(e) {
 		e.preventDefault();
-		setChosenCity(e.target.cityInput.value);
+		setCity(e.target.cityInput.value);
 		e.target.cityInput.value = "";
 	}
 

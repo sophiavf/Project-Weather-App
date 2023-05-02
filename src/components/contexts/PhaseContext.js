@@ -14,7 +14,7 @@ export function PhaseProvider(props) {
 		if (currentTime >= 6 && currentTime < 12) {
 			setPhase("morning");
 		} else if (currentTime >= 12 && currentTime < 18) {
-			setPhase("daytime");
+			setPhase("day");
 		} else if (currentTime >= 18 && currentTime < 21) {
 			setPhase("evening");
 		} else {

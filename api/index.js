@@ -20,6 +20,11 @@ app.get("/weather/:city/:endpoint/:days?", async (req, res) => {
 			.status(400)
 			.send('Invalid endpoint. Must be "current" or "forecast".');
 	}
+	if (city === undefined) {
+		return res
+			.status(400)
+			.send('A value for the city must be provided.');
+	}
 
 	let apiUrl = `https://api.weatherapi.com/v1/${endpoint}.json?key=${weatherApiKey}&q=${city}`;
 
