@@ -49,11 +49,11 @@ function ForecastDisplay() {
 		<div className="forecastDisplay">
 			{/* Button */}
 			{display === "hourly" ? (
-				<button onClick={changeForecastDisplay} className="toggleButton">
+				<button onClick={changeForecastDisplay} className="btn btn-secondary">
 					<b>Hourly</b> / Daily
 				</button>
 			) : (
-				<button onClick={changeForecastDisplay} className="toggleButton">
+				<button onClick={changeForecastDisplay} className="btn btn-secondary">
 					Hourly / <b>Daily</b>
 				</button>
 			)}

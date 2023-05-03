@@ -14,18 +14,17 @@ export default function Header() {
 	}
 
 	return (
-		<header>
+		<header className="flex items-center justify-between p-2 bg-primary">
 			<div className="headerLogo">
-				<span className="material-symbols-outlined">thermostat</span>
 				<h1>Your Personal Weather App</h1>
 			</div>
 			<form onSubmit={handleSubmit}>
-				<input
+				<input className="input input-bordered"
 					type="text"
 					name="cityInput"
 					placeholder="Search for a city"
 				></input>
-				<button type="submit">Submit</button>
+				<button className="btn" type="submit">Submit</button>
 			</form>
 		</header>
 	);
