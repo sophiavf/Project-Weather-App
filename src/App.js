@@ -11,18 +11,17 @@ import Footer from "./layouts/Footer";
 import WeatherComponent from "./components/WeatherComponent.js";
 
 export default function App() {
-
 	return (
-		<PhaseProvider>
-			<ThemeProvider>
-				<div className="contentContainer">
-					<CityProvider>
+		<ThemeProvider>
+			<div className="contentContainer">
+				<CityProvider>
+					<PhaseProvider>
 						<Header />
 						<WeatherComponent />
 						<Footer />
-					</CityProvider>
-				</div>
-			</ThemeProvider>
-		</PhaseProvider>
+					</PhaseProvider>
+				</CityProvider>
+			</div>
+		</ThemeProvider>
 	);
 }

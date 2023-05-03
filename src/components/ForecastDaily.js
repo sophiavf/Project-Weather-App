@@ -1,8 +1,10 @@
 import format from "date-fns/format";
 
+import { PhaseContext } from "./contexts/PhaseContext";
+
 function getFormattedDate(dateStr) {
 	if (dateStr !== undefined) {
-		const currentDate = new Date(dateStr * 1000); // To convert from epoch (* 1000)
+		const currentDate = new Date(dateStr); // To convert from epoch (* 1000)
 		return format(currentDate, "eeee");
 	} else {
 		return;
@@ -23,10 +25,10 @@ function dailyElementList(data) {
 		const array = data?.forecast?.forecastday;
 		const dayForecasts = array.map((day, index) => (
 			<div className="dayContainer" key={index}>
-				<div>{getFormattedDate(day?.date_epoch)}</div>
+				<div>{getFormattedDate(day?.date)}</div>
 				<img src={day?.day?.condition?.icon} />
-				<div>{day?.day?.maxtemp_c}&deg;C</div>
-				<div>{day?.day?.mtemp_c}&deg;C</div>
+				<div>Max {day?.day?.maxtemp_c}&deg;C</div>
+				<div>Min {day?.day?.mintemp_c}&deg;C</div>
 			</div>
 		));
 		return <div>{dayForecasts}</div>;

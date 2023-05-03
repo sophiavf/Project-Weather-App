@@ -1,7 +1,7 @@
 import format from "date-fns/format";
 
 function getFormattedDate(dateStr, element) {
-	const currentDate = new Date(dateStr * 1000); // To convert from epoch (* 1000)
+	const currentDate = new Date(dateStr); // To convert from epoch (* 1000)
 	if (dateStr !== undefined && element) {
 		return format(currentDate, "p");
 	} else {
@@ -21,21 +21,35 @@ export default ForecastHourly;
 
 //Receives data from the API service and renders it
 function hourlyElementList(data) {
-	
-	if (data !== undefined) { // could remove 
-		const currentLocalTime = getFormattedDate(data?.location?.localtime_epoch); 
-		// Gets only the data 
-		const array = data?.forecast?.forecastday?.[0]?.hour;
+	let next24HourForecast = [];
 
-		const filtered = array.filter(
-			(hour) => getFormattedDate(hour.time_epoch, false) >= currentLocalTime
-		);
-		const hourlyForecast = filtered.map((hour, index) => (
+	if (data !== undefined) {
+		//Gets the current local time from the data
+		const currentLocalTime = getFormattedDate(data?.location?.localtime);
+		//Includes only the forecast data from the api
+		const forecastDays = data.forecast.forecastday;
+		//Adds 24 hours to the currentLocalTime, used to ensure we only include the next 24 hours in the rendered array in the for loop
+		const twentyFourHours = new Date(currentLocalTime.getTime() + 60 * 60 * 24 * 1000);
+
+		//Loops through the 2d array: Days -> hours
+		for (let i = 0; i < forecastDays.length; i++) {
+			const hourlyData = forecastDays[i].hour;
+			for (let j = 0; j < hourlyData.length; j++) {
+				const forecastTime = new Date(hourlyData[j].time);
+				//Checks that hours is in the future, but no greater than 24 hours in the future
+				if (
+					forecastTime >= currentLocalTime &&
+					forecastTime <= twentyFourHours
+				) {
+					next24HourForecast.push(hourlyData[j]);
+				}
+			}
+		}
+
+		const hourlyForecast = next24HourForecast.map((hour, index) => (
 			<div className="hourContainer" key={index}>
-				<div className="hourlyTime">
-					{getFormattedDate(hour?.time_epoch, true)}
-				</div>
-				<img src={hour?.condition?.icon} />
+				<div className="hourlyTime">{getFormattedDate(hour.time, true)}</div>
+				<img src={hour.condition.icon} />
 				<div>{hour?.temp_c}&deg;C</div>
 			</div>
 		));

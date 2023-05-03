@@ -5,7 +5,7 @@ import { CityContext } from "./contexts/CityContext";
 import { PhaseContext } from "./contexts/PhaseContext";
 
 function getFormattedDate(dateStr, context) {
-	const currentDate = new Date(dateStr * 1000); // To convert from epoch (* 1000)
+	const currentDate = new Date(dateStr); // To convert from epoch (* 1000)
 	if (context) {
 		return format(currentDate, "eeee, Mo MMM YYY, p");
 	} else {
@@ -33,7 +33,7 @@ function ForecastCurrent() {
 				const data = await response.json();
 				// set state with the result
 				setData(data);
-				setLocationTime(getFormattedDate(data?.location?.localtime_epoch));
+				setLocationTime(getFormattedDate(data?.location?.localtime));
 			} catch (error) {
 				console.log(error);
 			} finally {
@@ -58,7 +58,7 @@ function ForecastCurrent() {
 						<div className="condition">{data?.current?.condition?.text}</div>
 						<div className="location">{data?.location?.name}</div>
 						<div className="localTime">
-							{getFormattedDate(data?.location?.localtime_epoch, "true")}
+							{getFormattedDate(data?.location?.localtime, "true")}
 						</div>
 					</div>
 					<div className="details">

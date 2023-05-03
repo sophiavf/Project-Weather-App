@@ -1,4 +1,8 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
+
+//import context
+
+import { CityContext } from "./CityContext";
 
 //Create a context object
 export const PhaseContext = createContext(); // sets initial value of context to nothing
@@ -7,6 +11,9 @@ export function PhaseProvider(props) {
 	const [phase, setPhase] = useState("");
 	const [imageUrl, setImageUrl] = useState({});
 	const [locationTime, setLocationTime] = useState("");
+
+	//CityContext
+	const { city, setCity } = useContext(CityContext);
 
 	useEffect(() => {
 		//get the current time
@@ -26,7 +33,9 @@ export function PhaseProvider(props) {
 		async function fetchImageUrl() {
 			if (phase !== "") {
 				try {
-					const response = await fetch(`http://localhost:8000/photo/${phase}`);
+					const response = await fetch(
+						`http://localhost:8000/photo/${phase}%20${city}`
+					);
 					const data = await response.json();
 					if (!response.ok) {
 						throw new Error("Network response was not ok");
@@ -38,7 +47,7 @@ export function PhaseProvider(props) {
 			}
 		}
 		fetchImageUrl();
-	}, [phase]);
+	}, [locationTime]);
 
 	return (
 		//passes the phase and image url values down to children components
