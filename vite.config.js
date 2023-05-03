@@ -1,30 +1,10 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import viteTsconfigPaths from "vite-tsconfig-paths";
+import viteTsconfigPaths from 'vite-tsconfig-paths';
+import svgrPlugin from 'vite-plugin-svgr';
 
-import { createHtmlPlugin } from "vite-plugin-html";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
+// https://vitejs.dev/config/
 export default defineConfig({
-	root: "src",
-	build: {
-		// Relative to the root
-		outDir: "./dist",
-	},
-
-	plugins: [
-		// createHtmlPlugin({
-		// 	minify: true,
-		// 	entry: "./index.html",
-		// 	inject: {
-		// 		data: {
-		// 			title: "My Weather App",
-		// 			injectScript: `<script src="./src/index.js"></script>`,
-		// 		},
-		// 	},
-		// }),
-		react({
-			include: /\.(mdx|js|jsx|ts|tsx)$/,
-		}),
-		viteTsconfigPaths(),
-	],
-});
+  plugins: [react(), viteTsconfigPaths(), svgrPlugin()],
+})

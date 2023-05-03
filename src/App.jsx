@@ -1,14 +1,14 @@
 import React from "react";
 //Importing context
-import { PhaseProvider } from "./components/contexts/PhaseContext.js";
-import { ThemeProvider } from "./components/contexts/ThemeContext.js";
-import { CityProvider } from "./components/contexts/CityContext.js";
+import { PhaseProvider } from "./components/contexts/PhaseContext";
+import { ThemeProvider } from "./components/contexts/ThemeContext";
+import { CityProvider } from "./components/contexts/CityContext";
 
 //importing components
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 
-import WeatherComponent from "./components/WeatherComponent.js";
+import WeatherComponent from "./components/WeatherComponent";
 
 export default function App() {
 	return (

@@ -4,6 +4,8 @@
         "forecastday",
         "localtime",
         "maxtemp",
-        "mtemp"
+        "mintemp",
+        "mtemp",
+        "svgr"
     ]
 }
