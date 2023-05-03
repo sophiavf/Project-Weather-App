@@ -1,9 +1,14 @@
 const PORT = 8000;
 
-const express = require("express"); // going into package.json and getting this package and using it by saving it as a const
-const cors = require("cors");
-const axios = require("axios");
-require("dotenv").config(); // Load environment variables from .env file
+import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+dotenv.config()
+import express from "express";
+import cors from "cors";
+import axios from "axios";
+
+// const express = express(); // going into package.json and getting this package and using it by saving it as a const
+// const cors = cors();
+// const axios = axios();
 
 const app = express();
 
@@ -21,9 +26,7 @@ app.get("/weather/:city/:endpoint/:days?", async (req, res) => {
 			.send('Invalid endpoint. Must be "current" or "forecast".');
 	}
 	if (city === undefined) {
-		return res
-			.status(400)
-			.send('A value for the city must be provided.');
+		return res.status(400).send("A value for the city must be provided.");
 	}
 
 	let apiUrl = `https://api.weatherapi.com/v1/${endpoint}.json?key=${weatherApiKey}&q=${city}`;

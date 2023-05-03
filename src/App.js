@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 //Importing context
 import { PhaseProvider } from "./components/contexts/PhaseContext.js";
 import { ThemeProvider } from "./components/contexts/ThemeContext.js";
