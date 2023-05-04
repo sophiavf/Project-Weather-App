@@ -19,7 +19,7 @@ export default function WeatherComponent() {
 		return <div>Loading...</div>;
 	}
 	return (
-		<div className="weatherContent" style={{ backgroundImage: `url(${imageUrl})` }}>
+		<div className="weatherContent bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${imageUrl})` }}>
 			<div>Good {phase} </div>
 			<ForecastCurrent />
 			<ForecastDisplay />

@@ -13,15 +13,15 @@ import WeatherComponent from "./components/WeatherComponent";
 export default function App() {
 	return (
 		<ThemeProvider>
-			<div className="contentContainer">
-				<CityProvider>
-					<PhaseProvider>
+			<CityProvider>
+				<PhaseProvider>
+					<div className="flex flex-col">
 						<Header />
 						<WeatherComponent />
 						<Footer />
-					</PhaseProvider>
-				</CityProvider>
-			</div>
+					</div>
+				</PhaseProvider>
+			</CityProvider>
 		</ThemeProvider>
 	);
 }

@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 
 import { CityContext } from "../components/contexts/CityContext";
 
+import { CloudIcon } from "@heroicons/react/24/outline";
+
 export default function Header() {
 	//Source: https://react.dev/learn/managing-state#reacting-to-input-with-state
 
@@ -14,17 +16,21 @@ export default function Header() {
 	}
 
 	return (
-		<header className="flex items-center justify-between p-2 bg-primary">
-			<div className="headerLogo">
-				<h1>Your Personal Weather App</h1>
+		<header className="md:flex items-center justify-between p-2 bg-primary">
+			<div className="flex items-center color text-slate-200">
+				<CloudIcon className="h-8 w-8" /> 
+				<h1 className="md:text-2xl text-xl">Your Personal Weather App</h1>
 			</div>
-			<form onSubmit={handleSubmit}>
-				<input className="input input-bordered"
+			<form className=" m-2" onSubmit={handleSubmit}>
+				<input
+					className="input input-bordered mr-4 h-11"
 					type="text"
 					name="cityInput"
 					placeholder="Search for a city"
 				></input>
-				<button className="btn" type="submit">Submit</button>
+				<button className="btn h-11" type="submit">
+					Submit
+				</button>
 			</form>
 		</header>
 	);

@@ -47,13 +47,13 @@ function hourlyElementList(data) {
 		}
 
 		const hourlyForecast = next24HourForecast.map((hour, index) => (
-			<div className="hourContainer" key={index}>
+			<div className="rounded-box flex flex-col bg-primary-content p-6 m-2 justify-center items-center shadow" key={index}>
 				<div className="hourlyTime">{getFormattedDate(hour.time, true)}</div>
 				<img src={hour.condition.icon} />
 				<div>{hour?.temp_c}&deg;C</div>
 			</div>
 		));
-		return <div>{hourlyForecast}</div>;
+		return <div className="overflow-y-hidden overflow-x-auto rounded-box flex p-10 bg-transparent">{hourlyForecast}</div>;
 	}
 	return;
 }
