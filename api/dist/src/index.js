@@ -1,8 +1,10 @@
 const PORT = 8000;
 
-import dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
-dotenv.config()
+import dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+dotenv.config();
 import express from "express";
+import serverless from "server";
+
 import cors from "cors";
 import axios from "axios";
 
@@ -11,6 +13,8 @@ import axios from "axios";
 // const axios = axios();
 
 const app = express();
+
+
 
 const weatherApiKey = process.env.WEATHER_API_KEY;
 const unsplashAccessKey = process.env.UNSPLASH_ACCESS_KEY;
@@ -61,4 +65,5 @@ app.get("/photo/:searchTerm", async (req, res) => {
 	}
 });
 
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+module.exports.handler = serverless(app); 
