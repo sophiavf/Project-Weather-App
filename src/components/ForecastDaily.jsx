@@ -27,11 +27,11 @@ function dailyElementList(data) {
 			<div className="rounded-box flex flex-col bg-primary p-6 m-2 justify-center items-center shadow-lg hover:bg-blue-700 text-base-100" key={index}>
 				<div>{getFormattedDate(day?.date)}</div>
 				<img src={day?.day?.condition?.icon} />
-				<div>Max {day?.day?.maxtemp_c}&deg;C</div>
-				<div>Min {day?.day?.mintemp_c}&deg;C</div>
+				<div className="whitespace-nowrap">Max {day?.day?.maxtemp_c}&deg;C</div>
+				<div className="whitespace-nowrap">Min {day?.day?.mintemp_c}&deg;C</div>
 			</div>
 		));
-		return <div className=" shadow-inner overflow-y-hidden  rounded-box flex m-10  bg-base-100 justify-between overflow-x-scroll ">{dayForecasts}</div>;
+		return <div className=" shadow-inner overflow-y-hidden  rounded-box flex m-4 md:m-10  bg-base-100 justify-between overflow-x-scroll ">{dayForecasts}</div>;
 	} else {
 		return;
 	}

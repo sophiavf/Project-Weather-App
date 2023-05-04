@@ -46,7 +46,7 @@ function ForecastDisplay() {
 	}
 	function genButton() {
 
-		let classes = "btn btn-secondary mx-10"; 
+		let classes = "btn btn-secondary mx-4 md:mx-10"; 
 		return display === "hourly" ? (
 			<button onClick={changeForecastDisplay} className={classes}>
 				<b>Hourly</b> / Daily

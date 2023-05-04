@@ -6,6 +6,9 @@ import { PhaseContext } from "./contexts/PhaseContext";
 
 //icons
 import { MapPinIcon } from "@heroicons/react/24/outline";
+import { BeakerIcon } from "@heroicons/react/24/outline";
+import { HandRaisedIcon } from "@heroicons/react/24/outline";
+import { ChevronDoubleRightIcon } from "@heroicons/react/24/outline";
 
 function getFormattedDate(dateStr, context) {
 	const currentDate = new Date(dateStr); // To convert from epoch (* 1000)
@@ -37,7 +40,7 @@ function ForecastCurrent() {
 				// set state with the result
 				setData(data);
 				setLocationTime(new Date(getFormattedDate(data?.location?.localtime)));
-				setCondition(data?.current?.condition?.text)
+				setCondition(data?.current?.condition?.text);
 			} catch (error) {
 				console.log(error);
 			} finally {
@@ -70,23 +73,25 @@ function ForecastCurrent() {
 							</div>
 						</div>
 					</div>
-					<div className="card card-bordered p-4 bg-base-100 grid gap-4 grid-cols-2 content-center shadow-inner align-middle sm:w-full md:w-76">
-						<div className="detailIconName justify-self-center align-self-center  ;">
-							<p>Feels like</p>
+					<div className="card card-bordered p-4 bg-base-100 grid gap-8 grid-cols-2 content-center shadow-inner align-middle sm:w-full md:w-76">
+						<div className="detailIconName justify-self-center align-self-center flex">
+							<HandRaisedIcon className="h-6 w-6" />
+							Feels like
 						</div>
-						<div className="justify-self-center align-self-center ">
+						<div className="justify-self-center ">
 							{data?.current?.feelslike_c}&deg;C
 						</div>
-						<div className="detailIconName justify-self-center align-self-center ; ">
-							<p>Humidity</p>
+						<div className="detailIconName justify-self-center flex">
+							<BeakerIcon className="h-6 w-6 " />
+							Humidity
 						</div>
-						<div className="justify-self-center align-self-center ">
+						<div className="justify-self-center  ">
 							{data?.current?.humidity}%
 						</div>
-						<div className="detailIconName justify-self-center align-self-center ;">
-							<p>Wind speed</p>
+						<div className="detailIconName justify-self-center flex">
+							<ChevronDoubleRightIcon className="h-6 w-6" /> Wind speed
 						</div>
-						<div className="justify-self-center align-self-center ">
+						<div className="justify-self-center  ">
 							{data?.current?.wind_kph}%
 						</div>
 					</div>
