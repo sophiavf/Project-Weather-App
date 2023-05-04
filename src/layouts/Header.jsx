@@ -16,8 +16,8 @@ export default function Header() {
 	}
 
 	return (
-		<header className="md:flex items-center justify-between p-2 bg-primary">
-			<div className="flex items-center color text-slate-200">
+		<header className="md:flex items-center justify-around p-2 bg-primary lg:px-40">
+			<div className="flex items-center color text-slate-200 m-2">
 				<CloudIcon className="h-8 w-8" /> 
 				<h1 className="md:text-2xl text-xl">Your Personal Weather App</h1>
 			</div>

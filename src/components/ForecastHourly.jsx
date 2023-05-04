@@ -29,7 +29,9 @@ function hourlyElementList(data) {
 		//Includes only the forecast data from the api
 		const forecastDays = data.forecast.forecastday;
 		//Adds 24 hours to the currentLocalTime, used to ensure we only include the next 24 hours in the rendered array in the for loop
-		const twentyFourHours = new Date(currentLocalTime.getTime() + 60 * 60 * 24 * 1000);
+		const twentyFourHours = new Date(
+			currentLocalTime.getTime() + 60 * 60 * 24 * 1000
+		);
 
 		//Loops through the 2d array: Days -> hours
 		for (let i = 0; i < forecastDays.length; i++) {
@@ -47,13 +49,22 @@ function hourlyElementList(data) {
 		}
 
 		const hourlyForecast = next24HourForecast.map((hour, index) => (
-			<div className="rounded-box flex flex-col bg-primary-content p-6 m-2 justify-center items-center shadow" key={index}>
-				<div className="hourlyTime">{getFormattedDate(hour.time, true)}</div>
+			<div
+				className="rounded-box flex flex-col bg-primary p-6 m-2 justify-center items-center shadow-lg hover:bg-blue-700 text-base-100"
+				key={index}
+			>
+				<div className="hourlyTime whitespace-nowrap">
+					{getFormattedDate(hour.time, true)}
+				</div>
 				<img src={hour.condition.icon} />
 				<div>{hour?.temp_c}&deg;C</div>
 			</div>
 		));
-		return <div className="overflow-y-hidden overflow-x-auto rounded-box flex p-10 bg-transparent">{hourlyForecast}</div>;
+		return (
+			<div className="shadow-inner overflow-y-hidden overflow-x-scroll rounded-box flex m-10  bg-base-100">
+				{hourlyForecast}
+			</div>
+		);
 	}
 	return;
 }

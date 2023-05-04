@@ -22,7 +22,7 @@ function ForecastCurrent() {
 	//const [imperialMetric, setImperialMetric] = useState("metric");
 
 	const { city, setCity } = useContext(CityContext);
-	const { phase, imageUrl, locationTime, setLocationTime } =
+	const { phase, imageUrl, locationTime, setLocationTime, setCondition } =
 		useContext(PhaseContext);
 
 	useEffect(() => {
@@ -36,7 +36,8 @@ function ForecastCurrent() {
 				const data = await response.json();
 				// set state with the result
 				setData(data);
-				setLocationTime(getFormattedDate(data?.location?.localtime));
+				setLocationTime(new Date(getFormattedDate(data?.location?.localtime)));
+				setCondition(data?.current?.condition?.text)
 			} catch (error) {
 				console.log(error);
 			} finally {
@@ -54,8 +55,8 @@ function ForecastCurrent() {
 			{isLoading ? (
 				<p>Loading</p>
 			) : (
-				<div className="flex flex-col justify-center md:flex-row items-center flex-wrap content-center pl-10">
-					<div className="card card-bordered items-center m-1 bg-white w-96 flex content-center shadow-inner">
+				<div className="flex flex-col md:flex-row content-center justify-center sm:items-center md:items-stretch m-4 md:m-10 gap-4">
+					<div className="card card-bordered items-center bg-base-100 md:w-76 flex content-between shadow-inner sm:w-full">
 						<img className="w-24" src={data?.current?.condition?.icon} />
 						<div className="card-body items-center">
 							<div className="temp ">{data?.current?.temp_c}&deg;C</div>
@@ -69,7 +70,7 @@ function ForecastCurrent() {
 							</div>
 						</div>
 					</div>
-					<div className="card card-bordered m-1 p-4 bg-white grid gap-4 grid-cols-2 content-center w-96  md:items-stretch h-full shadow-inner">
+					<div className="card card-bordered p-4 bg-base-100 grid gap-4 grid-cols-2 content-center shadow-inner align-middle sm:w-full md:w-76">
 						<div className="detailIconName justify-self-center align-self-center  ;">
 							<p>Feels like</p>
 						</div>

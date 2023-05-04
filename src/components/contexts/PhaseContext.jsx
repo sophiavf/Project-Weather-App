@@ -11,14 +11,14 @@ export function PhaseProvider(props) {
 	const [phase, setPhase] = useState("");
 	const [imageUrl, setImageUrl] = useState({});
 	const [locationTime, setLocationTime] = useState("");
+	const [condition, setCondition] = useState("");
 
 	//CityContext
 	const { city, setCity } = useContext(CityContext);
 
 	useEffect(() => {
 		//get the current time
-		const currentTime = locationTime;
-		const hours = currentTime.getHours;
+		const hours =  new Date(locationTime).getHours();
 
 		if (hours >= 6 && hours < 12) {
 			setPhase("morning");
@@ -34,7 +34,7 @@ export function PhaseProvider(props) {
 			if (phase !== "") {
 				try {
 					const response = await fetch(
-						`http://localhost:8000/photo/${phase}%20${city}`
+						`http://localhost:8000/photo/${phase}+${city}+${condition}`
 					);
 					const data = await response.json();
 					if (!response.ok) {
@@ -52,7 +52,7 @@ export function PhaseProvider(props) {
 	return (
 		//passes the phase and image url values down to children components
 		<PhaseContext.Provider
-			value={{ phase, imageUrl, locationTime, setLocationTime }}
+			value={{ phase, imageUrl, locationTime, setLocationTime, setCondition }}
 		>
 			{props.children}
 		</PhaseContext.Provider>

@@ -44,19 +44,23 @@ function ForecastDisplay() {
 	function changeForecastDisplay() {
 		setDisplay(display === "hourly" ? "daily" : "hourly");
 	}
+	function genButton() {
 
+		let classes = "btn btn-secondary mx-10"; 
+		return display === "hourly" ? (
+			<button onClick={changeForecastDisplay} className={classes}>
+				<b>Hourly</b> / Daily
+			</button>
+		) : (
+			<button onClick={changeForecastDisplay} className={classes}>
+				Hourly / <b>Daily</b>
+			</button>
+		);
+	}
 	return (
 		<div className="forecastDisplay">
 			{/* Button */}
-			{display === "hourly" ? (
-				<button onClick={changeForecastDisplay} className="btn btn-secondary">
-					<b>Hourly</b> / Daily
-				</button>
-			) : (
-				<button onClick={changeForecastDisplay} className="btn btn-secondary">
-					Hourly / <b>Daily</b>
-				</button>
-			)}
+			{genButton()}
 			{isLoading ? (
 				<p>Loading</p>
 			) : (

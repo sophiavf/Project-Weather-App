@@ -24,14 +24,14 @@ function dailyElementList(data) {
 	if (data !== undefined) { // could remove 
 		const array = data?.forecast?.forecastday;
 		const dayForecasts = array.map((day, index) => (
-			<div className="dayContainer carousel-item bg-primary-focus" key={index}>
+			<div className="rounded-box flex flex-col bg-primary p-6 m-2 justify-center items-center shadow-lg hover:bg-blue-700 text-base-100" key={index}>
 				<div>{getFormattedDate(day?.date)}</div>
 				<img src={day?.day?.condition?.icon} />
 				<div>Max {day?.day?.maxtemp_c}&deg;C</div>
 				<div>Min {day?.day?.mintemp_c}&deg;C</div>
 			</div>
 		));
-		return <div className="carousel rounded-box bg-primary-content">{dayForecasts}</div>;
+		return <div className=" shadow-inner overflow-y-hidden  rounded-box flex m-10  bg-base-100 justify-between overflow-x-scroll ">{dayForecasts}</div>;
 	} else {
 		return;
 	}

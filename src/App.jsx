@@ -15,7 +15,7 @@ export default function App() {
 		<ThemeProvider>
 			<CityProvider>
 				<PhaseProvider>
-					<div className="flex flex-col">
+					<div className="flex flex-col h-screen">
 						<Header />
 						<WeatherComponent />
 						<Footer />
