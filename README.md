@@ -84,10 +84,11 @@ I designed and implemented a secure and responsive weather app using JavaScript,
 - ![HTML5][html5]
 - ![JavaScript][js]
 - ![react.js]
-- ![ExpressJS]({https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white})
-- ![Netlify]({https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white})
-- ![Tailwind]({https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white})
-- ![Vite]({https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E})
+- ![ExpressJS]
+- ![Netlify]
+- ![Tailwind]
+- ![Vite]
+
 
 <!-- GETTING STARTED -->
 
@@ -220,3 +221,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [bootstrap-url]: https://getbootstrap.com
 [jquery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [jquery-url]: https://jquery.com
+[ExpressJS]: https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white
+[Vite]: https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E
+[Netlify]: https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white
+[Tailwind]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
