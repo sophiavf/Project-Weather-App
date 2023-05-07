@@ -8,7 +8,7 @@
 	"scripts": {
 		"preview": "vite preview",
 		"start": "vite",
-		"build": "tsc && vite build"
+		"build": "vite build"
 	},
 	"author": "",
 	"license": "ISC",
