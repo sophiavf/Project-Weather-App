@@ -28,7 +28,7 @@ export default function Header() {
 					name="cityInput"
 					placeholder="Search for a city"
 				></input>
-				<button className="btn h-11" type="submit">
+				<button className="btn btn-secondary" type="submit">
 					Submit
 				</button>
 			</form>

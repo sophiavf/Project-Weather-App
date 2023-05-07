@@ -7,7 +7,7 @@
 	"type": "module",
 	"scripts": {
 		"preview": "vite preview",
-		"dev:frontend": "vite",
+		"start": "vite",
 		"build": "tsc && vite build"
 	},
 	"author": "",

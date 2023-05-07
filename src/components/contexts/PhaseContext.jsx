@@ -18,7 +18,7 @@ export function PhaseProvider(props) {
 
 	useEffect(() => {
 		//get the current time
-		const hours =  new Date(locationTime).getHours();
+		const hours = new Date(locationTime).getHours();
 
 		if (hours >= 6 && hours < 12) {
 			setPhase("morning");
@@ -34,7 +34,7 @@ export function PhaseProvider(props) {
 			if (phase !== "") {
 				try {
 					const response = await fetch(
-						`http://localhost:8000/photo/${phase}+${city}+${condition}`
+						`https://friendly-liger-249f68.netlify.app//photo/${phase}+${city}+${condition}`
 					);
 					const data = await response.json();
 					if (!response.ok) {

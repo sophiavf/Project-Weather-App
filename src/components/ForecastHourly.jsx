@@ -50,7 +50,7 @@ function hourlyElementList(data) {
 
 		const hourlyForecast = next24HourForecast.map((hour, index) => (
 			<div
-				className="rounded-box flex flex-col bg-primary p-6 m-2 justify-center items-center shadow-lg hover:bg-blue-700 text-base-100"
+				className="rounded-box flex flex-col bg-secondary p-6 m-2 justify-center items-center shadow-lg hover:bg-secondary-focus"
 				key={index}
 			>
 				<div className="hourlyTime whitespace-nowrap">

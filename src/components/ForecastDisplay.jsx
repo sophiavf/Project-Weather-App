@@ -24,7 +24,7 @@ function ForecastDisplay() {
 			try {
 				const days = 3;
 				const response = await fetch(
-					`http://localhost:8000/weather/${city}/forecast/${days}`
+					`https://friendly-liger-249f68.netlify.app//weather/${city}/forecast/${days}`
 				);
 				const data = await response.json();
 				setData(data);
@@ -45,8 +45,7 @@ function ForecastDisplay() {
 		setDisplay(display === "hourly" ? "daily" : "hourly");
 	}
 	function genButton() {
-
-		let classes = "btn btn-secondary mx-4 md:mx-10"; 
+		let classes = "btn btn-secondary mx-4 md:mx-10";
 		return display === "hourly" ? (
 			<button onClick={changeForecastDisplay} className={classes}>
 				<b>Hourly</b> / Daily

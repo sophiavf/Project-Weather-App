@@ -34,7 +34,7 @@ function ForecastCurrent() {
 			// get the data from the api
 			try {
 				const response = await fetch(
-					`http://localhost:8000/weather/${city}/current`
+					`https://friendly-liger-249f68.netlify.app//weather/${city}/current`
 				);
 				const data = await response.json();
 				// set state with the result
@@ -92,7 +92,7 @@ function ForecastCurrent() {
 							<ChevronDoubleRightIcon className="h-6 w-6" /> Wind speed
 						</div>
 						<div className="justify-self-center  ">
-							{data?.current?.wind_kph}%
+							{data?.current?.wind_kph} kph
 						</div>
 					</div>
 				</div>
