@@ -73,7 +73,7 @@ https://github.com/othneildrew/Best-README-Template/blob/master/README.md
 
 [![Product Name Screen Shot][product-screenshot]](ttps://sophiavf.github.io/Project-Weather-App/)
 
-A simple React website created for the [Weather App Project](https://www.theodinproject.com/lessons/node-path-javascript-weather-app) on [The Odin Project](https://www.theodinproject.com/) to  show the weather forecast for a specified city, using data pulled in via the [weather API](www.weatherapi.com) using async functions.
+I designed and implemented a secure and responsive weather app using JavaScript, React, and a serverless Express JS backend on Netlify to protect API keys ensuring data security. To enhance the user experience, I utilized popular React hooks including useState, useEffect, and useContext. The app automatically fetches the user's location based on their IP address, displaying relevant weather information and a photo. I skillfully employed Tailwind CSS and the Daisy UI library to create visually appealing, sleek, and highly responsive components that elevate the overall user experience. 
 
 <!-- Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description` -->
 
@@ -82,10 +82,12 @@ A simple React website created for the [Weather App Project](https://www.theodin
 ### Built With
 
 - ![HTML5][html5]
-- ![CSS3][css]
 - ![JavaScript][js]
-- ![webpack][WebPack]
 - ![react.js]
+- ![ExpressJS]({https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white})
+- ![Netlify]({https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white})
+- ![Tailwind]({https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white})
+- ![Vite]({https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E})
 
 <!-- GETTING STARTED -->
 
@@ -135,6 +137,7 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 - [ ] Implement [form validation with Javascript](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#validating_forms_using_javascript) and autocompletion to reduce user errors in the city selection input element 
 - [ ] Enable users to select imperial or metric units 
+- [ ] Implement a dark / light theme toggle, and on initial load use the users system preferences 
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
