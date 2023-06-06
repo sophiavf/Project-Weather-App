@@ -54,14 +54,14 @@ function ForecastCurrent() {
 	}, [city]);
 
 	return (
-		<div className="forecastCurrent">
+		<>
 			{isLoading ? (
 				<p>Loading</p>
 			) : (
-				<div className="flex flex-col md:flex-row content-center justify-center sm:items-center md:items-stretch m-4 md:m-10 gap-4">
-					<div className="card card-bordered items-center bg-base-100 md:w-76 flex content-between shadow-inner sm:w-full">
-						<img className="w-24" src={data?.current?.condition?.icon} />
-						<div className="card-body items-center">
+				<div className="flex flex-col md:flex-row sm:items-center md:items-stretch m-4 md:m-10 gap-4 sm:w-full md:max-w-4xl">
+					<div className="flex-1 flex flex-col items-center bg-gray-light content-between shadow-inner rounded p-3">
+						<img className="w-22" src={data?.current?.condition?.icon} />
+						<div className="items-center flex flex-col gap-3">
 							<div className="temp ">{data?.current?.temp_c}&deg;C</div>
 							<div className="condition">{data?.current?.condition?.text}</div>
 							<div className="location card-title">
@@ -73,7 +73,7 @@ function ForecastCurrent() {
 							</div>
 						</div>
 					</div>
-					<div className="card card-bordered p-4 bg-base-100 grid gap-8 grid-cols-2 content-center shadow-inner align-middle sm:w-full md:w-76">
+					<div className="flex-1 bg-gray-light grid gap-8 grid-cols-2 content-center shadow-inner rounded p-3">
 						<div className="detailIconName justify-self-center align-self-center flex">
 							<HandRaisedIcon className="h-6 w-6" />
 							Feels like
@@ -97,7 +97,7 @@ function ForecastCurrent() {
 					</div>
 				</div>
 			)}
-		</div>
+		</>
 	);
 }
 

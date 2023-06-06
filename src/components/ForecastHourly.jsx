@@ -61,7 +61,7 @@ function hourlyElementList(data) {
 			</div>
 		));
 		return (
-			<div className="shadow-inner overflow-y-hidden overflow-x-scroll rounded-box flex m-4 md:m-10 bg-base-100">
+			<div className="shadow-inner overflow-y-hidden overflow-x-scroll rounded-box flex bg-base-100 ">
 				{hourlyForecast}
 			</div>
 		);

@@ -63,7 +63,7 @@ function ForecastDisplay() {
 			{isLoading ? (
 				<p>Loading</p>
 			) : (
-				<div className="forecastContainer">
+				<div className="forecastContainer md:max-w-4xl">
 					{display === "hourly" ? (
 						<ForecastHourly forecastData={data} />
 					) : (
