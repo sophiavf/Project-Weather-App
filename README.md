@@ -71,7 +71,7 @@ https://github.com/othneildrew/Best-README-Template/blob/master/README.md
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](ttps://sophiavf.github.io/Project-Weather-App/)
+[![Product Name Screen Shot][product-screenshot]](https://sophiavf.github.io/Project-Weather-App/)
 
 I designed and implemented a secure and responsive weather app using JavaScript, React, and a serverless Express JS backend on Netlify to protect API keys ensuring data security. To enhance the user experience, I utilized popular React hooks including useState, useEffect, and useContext. The app automatically fetches the user's location based on their IP address, displaying relevant weather information and a photo. I skillfully employed Tailwind CSS and the Daisy UI library to create visually appealing, sleek, and highly responsive components that elevate the overall user experience. 
 
