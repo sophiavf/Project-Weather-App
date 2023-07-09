@@ -115,7 +115,7 @@ To get a local copy up and running follow these simple steps.
    ```
 3. Run the development server to start a local demo of the project
    ```sh
-   npm start
+   npm run start
    ```
 
 4. Distribution files can be produced using the command
